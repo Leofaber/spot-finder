@@ -8,26 +8,13 @@ class Spot
 {
     public:
         Spot(double l, double b, string fileName, double confidence, string observationDate);
-        virtual ~Spot();
+        double getL();
+        double getB();
+        string getFileName();
+        string getObservationDate();
+        double getConfidence();
+        string toString();
 
-        double getL(){
-            return l;
-        }
-        double getB(){
-            return b;
-        }
-        string getFileName(){
-            return fileName;
-        }
-        string getObservationDate(){
-            return observationDate;
-        }
-        double getConfidence(){
-            return confidence;
-        }
-        string toString(){
-            return fileName+" "+to_string(l)+" "+to_string(b)+" "+to_string(confidence)+" "+observationDate;
-        }
     protected:
 
     private:
