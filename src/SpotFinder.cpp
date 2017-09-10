@@ -6,7 +6,7 @@ SpotFinder::SpotFinder(double l, double b, string _dataSetPath)
    theSpot_B = b;
    dataSetPath = _dataSetPath;
    degreeError = 10;
-   agileMapUtils = new AgileMap();
+   agileMapUtils = new AgileMap("imageForAgileMap.cts");
 }
 
 vector<Spot> SpotFinder::findProbableSpots(){
@@ -18,6 +18,8 @@ vector<Spot> SpotFinder::findProbableSpots(){
         Spot s = *it;
         cout << s.toString()<<endl;
 
+	cout << s.getL() << " " << s.getB() << " " << theSpot_L << " " << theSpot_B << endl;
+	cout << "Errore qua?" << endl;
         float sphericalDistanceFromTheSpot = agileMapUtils->SrcDist(s.getL(),s.getB(),theSpot_L,theSpot_B);
         cout << "Distanza dal NGC 4993: " << sphericalDistanceFromTheSpot <<endl;
 

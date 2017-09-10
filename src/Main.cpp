@@ -17,7 +17,7 @@ int main(int argc, char*argv[]){
         double l = 308.377257;
         double b = 39.293747;
 
-        string datasetPath = "Results_sources";
+        string datasetPath = "dataset.txt";
 
         SpotFinder sf = SpotFinder(l,b,datasetPath);
 

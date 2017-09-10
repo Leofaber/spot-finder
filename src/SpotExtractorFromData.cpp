@@ -25,7 +25,7 @@ vector<Spot> SpotExtractorFromData::extractSpotsFromDataSet(string dataSetPath){
 
             if(line.size()>80){
 
-
+                cout << "Found data" <<endl;
                 replace(line.begin(), line.end(), ',', ' ');
 
                 istringstream iss(line);
