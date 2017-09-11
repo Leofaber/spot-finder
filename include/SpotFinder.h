@@ -2,7 +2,8 @@
 #define SPOTFINDER_H
 
 #include "SpotExtractorFromData.h"
-#include "AgileMap.h"
+//#include "AgileMap.h"
+#include "MathUtils.h"
 
 class SpotFinder
 {
@@ -16,7 +17,7 @@ class SpotFinder
         double theSpot_B;
         string dataSetPath;
         double degreeError;
-        AgileMap* agileMapUtils;
+       // AgileMap* agileMapUtils;
 
 
 };
