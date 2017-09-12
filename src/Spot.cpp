@@ -1,31 +1,22 @@
 #include "Spot.h"
 
-Spot::Spot(double _l, double _b, string _fileName, double _confidence, string _observationDate)
+Spot::Spot(string _classificationLabel, double _l, double _b, double _confidence, string _dateUTC, string _dateTT , string _fileName, string _classificationThreshold)
 {
+
+    classificationLabel = _classificationLabel;
     l=_l;
     b=_b;
     fileName=_fileName;
-    observationDate=_observationDate;
     confidence=_confidence;
+    dateUTC = _dateUTC;
+    dateTT = _dateTT;
+    fileName = _fileName;
+    classificationThreshold = _classificationThreshold;
+
 }
 
 
 string Spot::toString(){
-    return fileName+" "+to_string(l)+" "+to_string(b)+" "+to_string(confidence)+" "+observationDate;
+    return classificationLabel+", "+to_string(l)+", "+to_string(b)+", "+to_string(confidence)+", "+dateUTC+", "+dateTT+", "+classificationThreshold;
 }
 
- double Spot::getL(){
-            return l;
-        }
-        double Spot::getB(){
-            return b;
-        }
-        string Spot::getFileName(){
-            return fileName;
-        }
-        string Spot::getObservationDate(){
-            return observationDate;
-        }
-        double Spot::getConfidence(){
-            return confidence;
-        }

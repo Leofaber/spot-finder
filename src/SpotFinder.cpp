@@ -9,33 +9,37 @@ SpotFinder::SpotFinder(double l, double b, string _dataSetPath)
    //agileMapUtils = new AgileMap("imageForAgileMap.cts");
 }
 
-vector<Spot> SpotFinder::findProbableSpots(){
+void SpotFinder::startAnalysis(){
 
     vector<Spot> spots = SpotExtractorFromData::extractSpotsFromDataSet(dataSetPath);
+
+    spots = filterSpotsByDistance(spots);
+
+    string output = "";
+    int index = 1;
+    for(vector<Spot>::iterator it = spots.begin(); it!=spots.end(); ++it){
+        Spot s = *it;
+        output+= to_string(index)+", "+to_string(s.getDistanceFromTheSpot())+", "+s.toString()+"\n";
+        index++;
+    }
+    FileWriter::write2File("ANALYSIS_LOG",output);
+}
+
+vector<Spot> SpotFinder::filterSpotsByDistance(vector<Spot> spots){
+
     vector<Spot> closeSpotsFromTheSpot;
 
     for(vector<Spot>::iterator it = spots.begin(); it!=spots.end(); ++it){
         Spot s = *it;
-        cout << s.toString()<<endl;
 
-        cout << s.getL() << " " << s.getB() << " " << theSpot_L << " " << theSpot_B << endl;
-        cout << "Errore qua?" << endl;
-        //float sphericalDistanceFromTheSpot = agileMapUtils->SrcDist(s.getL(),s.getB(),theSpot_L,theSpot_B);
+        s.setDistanceFromTheSpot( MathUtils::sphericalDistanceDeg(s.getL(),s.getB(),theSpot_L,theSpot_B) );
 
-        float sphericalDistanceFromTheSpot = MathUtils::sphericalDistanceDeg(s.getL(),s.getB(),theSpot_L,theSpot_B);
-        cout << "Distanza dal NGC 4993: " << sphericalDistanceFromTheSpot <<endl;
-
-        if(sphericalDistanceFromTheSpot <= degreeError){
+        if(s.getDistanceFromTheSpot() <= degreeError){
             closeSpotsFromTheSpot.push_back(s);
         }
 
     }
 
-    cout << "Gli spot vicini a NGC 4993 sono: " << endl;
-    for(vector<Spot>::iterator it = closeSpotsFromTheSpot.begin(); it!=closeSpotsFromTheSpot.end(); ++it){
-        Spot s = *it;
-        cout << s.toString()<<"\n"<<endl;
-    }
 
     return closeSpotsFromTheSpot;
 }

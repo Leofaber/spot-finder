@@ -1,31 +1,24 @@
-# agextspot-v2
+# AG_spotfinder
 
 
-spot-finder-1.0.0
-
+AG_spotfinder-1.0.1
 	
-
 	Documentazione: 
 
 	Repo: https://github.com/Leofaber/spot-finder
 
 
-
 UTILIZZO
 
-	./nome_eseguibile
-
-	Esempio di utilizzo:
-
+	./nome_eseguibile  ../path_al_file_dei_risultati
 	
 
 OUTPUT
 	
-	Il software scrive un file di log. 
+	Il software scrive un file di log: che elenca gli spot che sono vicini almeno 10 gradi alla posizione x. 
 
-	nome_file_di_log_sources.txt
+	ANALYSIS_LOG.txt
 
-	path_al_file/nome_file, classificazione, L, B, probabilità_GRB, data_di_acquisizione
+	indice, distanza dalla posizione x, etichetta_di_classificazione,  L_GAL,   B_GAL,   confidenza_(%),   dataUTC,   dataTT, nome_file_di_log, soglia_di_classificazione
 	
-	Esempio di output:
-	/ANALYSIS3/NGC4993_SHORT/output/100s_428630400.0_431308800.0/SCAN100_428638883.0_428638983.0_84.cts.gz, SOURCE, 308.043322, 41.543278, 99.999979%, 2017-08-01T02:22:30
+	

@@ -26,37 +26,46 @@ vector<Spot> SpotExtractorFromData::extractSpotsFromDataSet(string dataSetPath){
             if(line.size()>80){
 
                 cout << "Found data" <<endl;
+
+
                 replace(line.begin(), line.end(), ',', ' ');
+
 
                 istringstream iss(line);
 
-                string pathToFile;
-                string classification;
-                string l;
-                string b;
+                string index;
+                string fileName;
+                string classificationLabel;
+                string l_gal;
+                string b_gal;
                 string confidence;
-                string date;
+                string dateUTC;
+                string dateTT;
+                string classificationThreshold;
 
-                iss >> pathToFile;
-                iss >> classification;
-                iss >> l;
-                iss >> b;
+
+
+                iss >> index;
+                iss >> classificationLabel;
+                iss >> l_gal;
+                iss >> b_gal;
                 iss >> confidence;
-                iss >> date;
+                iss >> dateUTC;
+                iss >> dateTT;
+                iss >> fileName;
+                iss >> classificationThreshold;
 
+                //   cout <<pathToFile <<endl;
+                //   cout <<classification<<endl;
+                //   cout <<l<<endl;
+                //   cout <<b<<endl;
+                //   cout <<confidence<<endl;
+                //   cout <<date<<endl;
 
-
-              //  cout <<pathToFile <<endl;
-             //   cout <<classification<<endl;
-             //   cout <<l<<endl;
-             //   cout <<b<<endl;
-             //   cout <<confidence<<endl;
-             //   cout <<date<<endl;
-
-                spotsData.push_back(Spot( stod(l), stod(b), pathToFile, stod(confidence), date));
+                spotsData.push_back(Spot(classificationLabel, stod(l_gal), stod(b_gal), stod(confidence), dateUTC, dateTT, fileName, classificationThreshold));
 
             }else{
-                cout << "Line's empty" << endl;
+               // cout << "Line's empty" << endl;
             }
         }
 

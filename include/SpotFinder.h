@@ -4,12 +4,14 @@
 #include "SpotExtractorFromData.h"
 //#include "AgileMap.h"
 #include "MathUtils.h"
+#include "FileWriter.h"
 
 class SpotFinder
 {
     public:
         SpotFinder(double l, double b, string dataSetPath);
-        vector<Spot> findProbableSpots();
+        void startAnalysis();
+        vector<Spot> filterSpotsByDistance(vector<Spot> spots);
     protected:
 
     private:

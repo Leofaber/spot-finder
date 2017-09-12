@@ -7,22 +7,36 @@ using namespace std;
 class Spot
 {
     public:
-        Spot(double l, double b, string fileName, double confidence, string observationDate);
-        double getL();
-        double getB();
-        string getFileName();
-        string getObservationDate();
-        double getConfidence();
+        Spot(string classificationLabel, double l, double b, double confidence, string dateUTC, string dateTT , string fileName, string classificationThreshold);
+
+
         string toString();
 
+        inline double getL(){
+            return l;
+        }
+        inline double getB(){
+            return b;
+        }
+        inline float getDistanceFromTheSpot() {
+            return distanceFromTheSpot;
+        }
+        inline void setDistanceFromTheSpot(float d) {
+            distanceFromTheSpot = d;
+        }
     protected:
 
     private:
+        string classificationLabel;
         double l;
         double b;
-        string fileName;
-        string observationDate;
         double confidence;
+        string dateUTC;
+        string dateTT;
+        string fileName;
+        string classificationThreshold;
+        float distanceFromTheSpot;
+
 };
 
 #endif // SPOT_H
